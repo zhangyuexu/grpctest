@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+option java_package = "com.xueqiu.grpcgenerate";
+
+message Page {
+    int32 number = 1;
+    int32 size = 2;
+}
+
+message Cash {
+    int64 accountId = 1;
+    string currency = 2;
+    double settled = 3;
+    double unsettled = 4;
+    double locked = 5;
+    double accruedDividend = 6;
+    double accruedInterest = 7;
+}
+
+message Position {
+    int64 accountId = 1;
+    string securityType = 2;
+    int64 securityId = 3;
+    double totalQuantity = 4;
+    double unsettledQuantity = 5;
+    double lockedQuantity = 6;
+}
+
+
+message Asset {
+    int64 accountId = 1;
+    string currency = 2;
+    double equityWithLoan = 3;
+    double regTEquityWithLoan = 4;
+    double netLiquidation = 5;
+    double excessEquity = 6;
+    double excessLiquidity = 7;
+    double overnightLiquidation = 8;
+    double availableEE = 9;
+    double buyingPower = 10;
+    double availableBuyingPower = 11;
+    double leverage = 12;
+    int32 canMargin = 13;
+    double initialMargin =14;
+    double maintenanceMargin = 15;
+    double cashBalance = 16 ;
+    string accountType = 17 ;
+}
+
+message CashActivity {
+    int64 accountId = 1;
+    string currency = 2;
+    string cashType = 3;
+    int64 cashActivityId=4;
+    double amount = 5;
+    string desc = 6;
+    uint64 happenAt = 7;
+    uint64 settleAt = 8;
+    uint64 createAt = 9;
+    uint64 updateAt = 10;
+}
+
+message MarginRate {
+    int64 id=1;
+    int64 securityId=2;
+    string symbol=3;
+    string market=4;
+    double longInitialMargin=5;
+    double longOvernightMargin=6;
+    double longMaintenanceMargin=7;
+    double shortInitialMargin=8;
+    double shortMaintenanceMargin=9;
+    double shortOvernightMargin=10;
+    double shortFeeRate=11;
+    int64 shortAvailable=12;
+}
+
+message LiquidationOrder{
+    int64 liqOrderId=1;
+    int64 securityId=2;
+    string symbol=3;
+    string market=4;
+    string currency =5;
+    string liquidationType=6 ;
+    string status =7 ;
+    double quantity =8 ;
+    double price = 9;
+    string createdAt =10 ;
+    string updatedAt =11;
+
+}
+
+message LiquidationRiskConfig{
+    int32 liquidationRiskTemplateId=1;
+    string templateName=2;
+    string autoLiquidation=3;
+    string sem=4;
+    double semRate =5;
+    double eodRate=6 ;
+    double waringELRate =7;
+    double updatedAt=8 ;
+    string status=9 ;
+    string effectiveDate=10 ;
+}

@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+option java_package = "com.xueqiu.grpcgenerate";
+import "model.proto";
+
+service CRMService {
+    rpc  setLiquidationRiskConfig(LiqRiskTemplateRequest) returns (LiqRiskTemplateResponse) {}
+
+    rpc  queryLiqRiskTemplateList(LiqRiskTemplateRequest) returns (LiqRiskTemplateListResponse) {}
+
+    rpc  queryLiquidationOrder(LiquidationOrderRequest) returns (LiquidationOrdersResponse) {}
+
+    rpc  queryLiquidationWarningAccounts(LiqWarningAccountRequest) returns (LiqWarningAccountsResponse) {}
+}
+
+message LiqRiskTemplateRequest {
+    LiquidationRiskConfig liquidationRiskConfig=1;
+}
+
+message LiqRiskTemplateResponse{
+    LiquidationRiskConfig liqRiskTemplates=1;
+}
+
+message LiqRiskTemplateListResponse{
+    repeated LiquidationRiskConfig liqRiskTemplates=1;
+}
+
+message LiquidationOrderRequest{
+    int64 accountId = 1;
+    string market =2;
+    string status =3 ;
+    int64 liquidationOrderId =4 ;
+    Page page =5;
+}
+
+message LiquidationOrdersResponse{
+    repeated LiquidationOrder orders=1;
+    int32 totalCount = 2;
+    int32 pageCount = 3;
+}
+
+message LiqWarningAccountRequest{
+    Page page =1;
+}
+
+message LiqWarningAccountsResponse{
+    repeated Asset assets = 1;
+    int32 totalCount = 2;
+    int32 pageCount = 3;
+    int32 pageNum= 4;
+}
+
+enum CRMErrorCode {
+    EFFECTIVE_DATE_EXITS = 0;
+    PARAM_ERROR = 1;
+}

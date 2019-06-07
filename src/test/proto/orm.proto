@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "com.xueqiu.grpcgenerate";
+import "model.proto";
+
+service ORMService {
+    rpc  setLiquidationRiskConfig(LiqRiskTemplateRequest1) returns (LiqRiskTemplateResponse1) {}
+
+}
+
+message LiqRiskTemplateRequest1 {
+    LiquidationRiskConfig liquidationRiskConfig=1;
+}
+
+message LiqRiskTemplateResponse1{
+    LiquidationRiskConfig liqRiskTemplates=1;
+}

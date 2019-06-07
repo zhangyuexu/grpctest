@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "com.xueqiu.grpcgenerate";
+import "model.proto";
+import "google/api/annotations.proto";
+
+service ORMService {
+    rpc  setLiquidationRiskConfig(LiqRiskTemplateRequest1) returns (LiqRiskTemplateResponse1) {option (google.api.http) = {post:"/setLiquidationRiskConfig" body:"*"};}
+
+}
+
+message LiqRiskTemplateRequest1 {
+    LiquidationRiskConfig liquidationRiskConfig=1;
+}
+
+message LiqRiskTemplateResponse1{
+    LiquidationRiskConfig liqRiskTemplates=1;
+}
